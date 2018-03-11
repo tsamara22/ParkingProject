@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script type="text/javascript" src="http://www.carqueryapi.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+
+<script type="text/javascript">
+$(document).ready(
+function()
+{
+     //Create a variable for the CarQuery object.  You can call it whatever you like.
+     var carquery = new CarQuery();
+
+     //Run the carquery init function to get things started:
+     carquery.init();
+     
+     //Optionally, you can pre-select a vehicle by passing year / make / model / trim to the init function:
+     //carquery.init('2000', 'dodge', 'Viper', 11636);
+
+     //Optional: Pass sold_in_us:true to the setFilters method to show only US models. 
+     carquery.setFilters( {sold_in_us:true} );
+
+     //Optional: initialize the year, make, model, and trim drop downs by providing their element IDs
+     carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+
+     
+});
+</script>
+
+
+</head>
+
+
+
+<h2>Choose Your Car</h2>
+<hr />
+
+<label>Select Year:</label><br />
+<select name="car-years" id="car-years"></select><br />
+<label>Select Make:</label><br />
+<select name="car-makes" id="car-makes"></select><br /> 
+<label>Select Model:</label><br />
+<select name="car-models" id="car-models"></select><br />
+<label>Select Color:</label><br />
+<select id = "vehicle-color" name="vehicle-color">
+	<option value="">---</option>
+	<option value="Beige">Beige</option>
+	<option value="Black">Black</option>
+	<option value="Blue">Blue</option>
+	<option value="Brown">Brown</option>
+	<option value="Burgundy">Burgundy</option>
+	<option value="Gold">Gold</option>
+	<option value="Grey">Grey</option>
+	<option value="Green">Green</option>
+	<option value="Maroon">Maroon</option>
+	<option value="Orange">Orange</option>
+	<option value="Other">Other</option>
+	<option value="Pearl">Pearl</option>
+	<option value="Pink">Pink</option>
+	<option value="Purple">Purple</option>
+	<option value="Red">Red</option>
+	<option value="Silver">Silver</option>
+	<option value="Tan">Tan</option>
+	<option value="White">White</option>
+	<option value="Yellow">Yellow</option>
+	
+</select>
+
+<body>
+
+</body>
+</html>

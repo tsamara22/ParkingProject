@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Midway Parking Spot</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- LINK TO FIREBASE GOES HERE -->
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+      <script type="text/javascript" src="http://www.carqueryapi.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+
+<script type="text/javascript">
+$(document).ready(
+function()
+{
+     //Create a variable for the CarQuery object.  You can call it whatever you like.
+     var carquery = new CarQuery();
+
+     //Run the carquery init function to get things started:
+     carquery.init();
+     
+     //Optionally, you can pre-select a vehicle by passing year / make / model / trim to the init function:
+     //carquery.init('2000', 'dodge', 'Viper', 11636);
+
+     //Optional: Pass sold_in_us:true to the setFilters method to show only US models. 
+     carquery.setFilters( {sold_in_us:true} );
+
+     //Optional: initialize the year, make, model, and trim drop downs by providing their element IDs
+     carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+
+     
+});
+</script>
+        
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <br>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1 class="text-center">Midway Parking Spot</h1>
+      </div>
+
+      <div class="row">
+
+        <!-- Sign-Up Panel-->
+        <div class="col-lg-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">New Booking</h3>
+            </div>
+
+            <div class="panel-body">
+
+              <!-- Sign-up Form (note the various input "types")-->
+              <!-- Contact Details-->
+              <form role="form">
+                <div class="form-group">
+                  <h3>Contact Details</h3>
+                  <label for="name-input">Name:</label>
+                  <input class="form-control" id="name-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="email-input">Email:</label>
+                  <input class="form-control" id="email-input" type="email">
+                </div>
+                <div class="form-group">
+                  <label for="phone-input">Phone:</label>
+                  <input class="form-control" id="phone-input" type="text">
+                </div>
+                <div class="form-group">
+                 <label for="comment-input">Special Instructions/Comments</label>
+                 <textarea class="form-control" id="comment-input" rows="5"></textarea>
+                 </div>
+                 <!-- Vehicle Details-->
+                 <form role="form">
+                <div class="form-group">
+                  <h3>Vehicle</h3>
+
+                  <label for="plate-input">Licence Plate#:</label>
+                  <input class="form-control" id="plate-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="year-input">Select Year:</label>
+                  <select class="form-control" name="car-years" value="2018" hidden="hidden" id="car-years"></select>
+
+                </div>
+                <div class="form-group">
+                  <label for="make-input">Select Make:</label>
+                  <select class="form-control" name="car-makes" id="car-makes"></select>
+                </div>
+                <div class="form-group">
+                 <label for="comment-input">Select Model</label>
+                 <select class="form-control" name="car-models" id="car-models"></select>
+                 </div>
+                 <form>
+                 <!-- 2nd tab end-->
+                 <!-- Return Flight Details-->
+                 <form role="form">
+                <div class="form-group">
+                  <h3>Return Flight</h3>
+
+                  <label for="plate-input">Return Date:</label>
+                  <input class="form-control" id="return-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="email-input">Airline:</label>
+                  <input class="form-control" id="airline-input" type="email">
+                </div>
+                <div class="form-group">
+                  <label for="phone-input">Flight#:</label>
+                  <input class="form-control" id="flight-input" type="text">
+                </div>
+                <div class="form-group">
+                 <label for="comment-input">Arriving From</label>
+                 <input class="form-control" id="arriving-input" type="text">
+                 </div>
+                 <form>
+
+
+
+                <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+                <button class="btn btn-default" id="delete-user" type="button">Click to Delete</button>
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Most Recent Member Panel -->
+        <div class="col-lg-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Most Recent Member</h3>
+            </div>
+            <div class="panel-body" id="recent-member">
+              <h2 id="name-display"></h2>
+              <h4 id="email-display"></h4>
+              <h4 id="phone-display"></h4>
+              <p id="comment-display"></p>
+              <p id="plate-display"></p>
+              <p id="year-display"></p>
+              <p id="make-display"></p>
+              <p id="model-display"></p>
+              <p id="color-display"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wells for displaying all users -->
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">All Members</h3>
+            </div>
+            <div class="panel-body">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody class="member-list">
+</table>
+    
+
+
+
+
+
+    
+      
+    
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="assets/javascript/app.js"></script>
+
+    <!-- Script -->
+    <script>  
+        // Initialize Firebase
+
+</script>
+  </body>
+
+</html>
