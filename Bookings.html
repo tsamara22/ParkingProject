@@ -68,10 +68,14 @@ function()
               <!-- Sign-up Form (note the various input "types")-->
               <!-- Contact Details-->
               <form role="form">
+                <h3>Contact Details</h3>
                 <div class="form-group">
-                  <h3>Contact Details</h3>
-                  <label for="name-input">Name:</label>
-                  <input class="form-control" id="name-input" type="text">
+                  <label for="name-input">First Name:</label>
+                  <input class="form-control" id="first-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="name-input">Last Name:</label>
+                  <input class="form-control" id="last-input" type="text">
                 </div>
                 <div class="form-group">
                   <label for="email-input">Email:</label>
@@ -106,6 +110,34 @@ function()
                  <label for="comment-input">Select Model</label>
                  <select class="form-control" name="car-models" id="car-models"></select>
                  </div>
+                  <div class="form-group">
+                 <label for="comment-input">Color</label>
+                 <select class="form-control" name="car-color" id="car-color">
+                 <option>---</option>
+                 <option value="Biegeeige">Biege</option>
+                 <option value="Black">Black</option>
+                 <option value="Blue">Blue</option>
+                 <option value="Brown">Brown</option>
+                 <option value="Burgundy">Burgundy</option>
+                 <option value="Gold">Gold</option>
+                 <option value="Grey">Grey</option>
+                 <option value="Green">Green</option>
+                 <option value="Maroon">Maroon</option>
+                 <option value="Orange">Orange</option>
+                 <option value="Other">Other</option>
+                 <option value="Pearl">Pearl</option>
+                 <option value="Pink">Pink</option>
+                 <option value="Purple">Purple</option>
+                 <option value="Red">Red</option>
+                 <option value="Silver">Silver</option>
+                 <option value="Tan">Tan</option>
+                 <option value="White">White</option>
+                 <option value="Yellow">Yellow</option>
+
+
+
+                 </select>
+                 </div>
                  <form>
                  <!-- 2nd tab end-->
                  <!-- Return Flight Details-->
@@ -133,7 +165,7 @@ function()
 
 
                 <button class="btn btn-default" id="add-user" type="submit">Submit</button>
-                <button class="btn btn-default" id="delete-user" type="button">Click to Delete</button>
+                <button class="btn btn-default" id="delete-user" type="submit">Click to Delete</button>
               </form>
 
             </div>
@@ -149,7 +181,8 @@ function()
               <h3 class="panel-title">Most Recent Member</h3>
             </div>
             <div class="panel-body" id="recent-member">
-              <h2 id="name-display"></h2>
+              <h2 id="first-display"></h2>
+              <h2 id="last-display"></h2>
               <h4 id="email-display"></h4>
               <h4 id="phone-display"></h4>
               <p id="comment-display"></p>
@@ -158,6 +191,10 @@ function()
               <p id="make-display"></p>
               <p id="model-display"></p>
               <p id="color-display"></p>
+              <p id="return-display"></p>
+              <p id="airline-display"></p>
+              <p id="flight-display"></p>
+              <p id="arriving-display"></p>
             </div>
           </div>
         </div>
